@@ -11,6 +11,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
+import models.RepositoryPojoModel;
 import models.UserPojoModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -19,6 +20,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import specs.AuthSpec;
 
 @Tag("API")
 @Story("Work with api on gitHub")
@@ -37,7 +39,6 @@ public class ApiTests extends TestBase {
             user.set(given()
                 .spec(baseRequest)
                 .when()
-                //.get(credentialsConfig.login1())
                 .get(login)
                 .then()
                 .log().body()
@@ -51,10 +52,9 @@ public class ApiTests extends TestBase {
         });
     }
 
-
     static Stream<Arguments> userCompareTestDataProvider() {
         return Stream.of(
-            Arguments.of("wycats", "Yehuda Katz", null ),
+            Arguments.of("wycats", "Yehuda Katz", null),
             Arguments.of("KirinDave", "Dave Fayram", null)
         );
     }
@@ -86,7 +86,7 @@ public class ApiTests extends TestBase {
 
     @Test
     @Feature("test with secret user data")
-    @DisplayName("Comparing user data with stream arguments")
+    @DisplayName("Comparing user data with secret arguments")
     public void compareUserDataWithSecretArguments() {
         baseRequest.basePath("/users");
         AtomicReference<UserPojoModel> user = new AtomicReference<>();
@@ -106,5 +106,56 @@ public class ApiTests extends TestBase {
             assertThat(user.get().getName()).isEqualTo(credentialsConfig.name());
             assertThat(user.get().getEmail()).isEqualTo(credentialsConfig.email());
         });
+    }
+
+    @Test
+    @Feature("test with post method and Authorization token")
+    @DisplayName("Create new repository to user")
+    public void createUserRepository() {
+        //Set options of repository we want to create
+        RepositoryPojoModel repositoryModel = new RepositoryPojoModel()
+            .name("repository")
+            .isPrivate(true)
+            .description("Repository for test. Should be deleted");
+        baseRequest.basePath("/user/repos");
+        AtomicReference<RepositoryPojoModel> repo = new AtomicReference<>();
+
+        step("Create repository for authorized user", () ->
+            repo.set(given()
+                .spec(AuthSpec.reqSpec)
+                .body(repositoryModel)
+                .when()
+                .post()
+                .then()
+                .log().body()
+                .statusCode(201)
+                .extract().body().as(RepositoryPojoModel.class)));
+
+        step("Compare repository info and entered before data ", () -> {
+            RepositoryPojoModel repoInfo = repo.get();
+            assertThat(repoInfo.id()).isNotNull();
+            assertThat(repoInfo.name()).isEqualTo(repositoryModel.name());
+            assertThat(repoInfo.isPrivate()).isEqualTo(repositoryModel.isPrivate());
+            assertThat(repoInfo.description()).isEqualTo(repositoryModel.description());
+            assertThat(repoInfo.owner().login()).isEqualTo(credentialsConfig.accLogin());
+        });
+
+        // Delete created repository. Clear test data
+        step("Delete created repository", () ->
+            cleanRepoList(repositoryModel.name()));
+    }
+
+    //method to delete repository from test
+    private static void cleanRepoList(String repositoryName) {
+        String reqPath = String.format("/repos/%s/", credentialsConfig.accLogin());
+        given()
+            .spec(AuthSpec.reqSpec)
+            .noFilters()
+            .basePath(reqPath)
+            .when()
+            .delete(repositoryName)
+            .then()
+            .log().body()
+            .statusCode(204);
     }
 }

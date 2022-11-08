@@ -13,6 +13,10 @@ public interface CredentialsConfig extends Config {
 
     String email();
 
+    String apiToken();
+
+    String accLogin();
+
     String login1();
 
     String name1();

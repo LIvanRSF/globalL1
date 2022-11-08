@@ -1,5 +1,6 @@
 # GitHub. Автотесты на Java
 
+<a name="наверх"></a>
 
 ## Содержание :bookmark_tabs:
 * <a href="#stack">Cтек технологий</a>

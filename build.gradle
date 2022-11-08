@@ -1,23 +1,42 @@
 plugins {
     id 'java-library'
-    id 'io.qameta.allure' version '2.9.6'
-    id 'io.freefair.lombok' version '6.5.0.3'
+    id 'io.qameta.allure' version '2.10.0'
+    id 'io.freefair.lombok' version '6.0.0-m2'
 }
 
 repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.18.1",
-    selenideVersion = "6.6.6",
-    restAssuredVersion = "5.1.1",
-    appiumVersion = "8.1.1",
-    javaFakerVersion = "1.0.2",
-    ownerVersion = "1.0.12",
+def jUnitVersion = '5.8.2',
+    appiumVersion = "8.0.0",
+    selenideVersion = '6.5.2',
+    restAssuredVersion = '5.1.1',
+    ownerVersion = '1.0.12',
+    gsonVersion = '2.9.1',
+    javaFakerVersion = '1.0.2',
+    assertjVersion = '3.23.1',
+    allureVersion = '2.18.1',
     commonsIoVersion = "2.11.0",
-    assertjVersion = "3.19.0",
-    slf4jVersion = "1.7.32",
-    junitVersion = "5.9.0"
+    slf4jVersion = '1.7.36'
+
+dependencies {
+    testImplementation(
+        "org.junit.jupiter:junit-jupiter:$jUnitVersion",
+        "io.appium:java-client:$appiumVersion",
+        "com.codeborne:selenide:$selenideVersion",
+        "io.appium:java-client:$appiumVersion",
+        "io.rest-assured:rest-assured:$restAssuredVersion",
+        "org.aeonbits.owner:owner:$ownerVersion",
+        "com.google.code.gson:gson:$gsonVersion",
+        "com.github.javafaker:javafaker:$javaFakerVersion",
+        "org.assertj:assertj-core:$assertjVersion",
+        "io.qameta.allure:allure-selenide:$allureVersion",
+        "io.qameta.allure:allure-rest-assured:$allureVersion",
+        "commons-io:commons-io:$commonsIoVersion",
+        "org.slf4j:slf4j-simple:$slf4jVersion",
+    )
+}
 
 allure {
     report {
@@ -33,41 +52,25 @@ allure {
     }
 }
 
-dependencies {
-    testImplementation("org.aspectj:aspectjweaver:1.9.6",
-        "com.codeborne:selenide:$selenideVersion",
-        "io.qameta.allure:allure-selenide:$allureVersion",
-        "io.qameta.allure:allure-rest-assured:$allureVersion",
-        "io.rest-assured:rest-assured:$restAssuredVersion",
-        "io.appium:java-client:$appiumVersion",
-        "com.github.javafaker:javafaker:$javaFakerVersion",
-        "org.aeonbits.owner:owner:$ownerVersion",
-        "org.assertj:assertj-core:$assertjVersion",
-        "commons-io:commons-io:$commonsIoVersion",
-        "org.slf4j:slf4j-simple:$slf4jVersion",
-        "org.junit.jupiter:junit-jupiter:$junitVersion")
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
     systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
         lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
+            events 'started', 'skipped', 'failed', 'standard_error', 'standard_out'
+            exceptionFormat 'short'
         }
     }
 }
 
-task android(type: Test) {
+task apiTests(type: Test) {
     useJUnitPlatform {
-        includeTags 'android'
+        includeTags "API"
     }
 }
-sourceCompatibility = JavaVersion.VERSION_1_9
-targetCompatibility = JavaVersion.VERSION_1_9

@@ -2,10 +2,12 @@ package tests.ui;
 
 import base.UiTestBase;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 @Tag("UI")
 @Story("Work with UI on site")
 @DisplayName("UI tests")

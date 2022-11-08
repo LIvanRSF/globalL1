@@ -4,11 +4,10 @@
 ## Содержание :bookmark_tabs:
 * <a href="#stack">Cтек технологий</a>
 * <a href="#objects">Объекты тестирования</a>
-* <a href="#screenshot">Скриншоты и видео</a>
-    + <a href="#selenoid">Selenoid</a>
-    + <a href="#jenkins">Jenkins</a>
-    + <a href="#allure">Allure Report</a>
-    + <a href="#notifications">Telegram, Email</a>
+* <a href="#Jenkins">Запуск тестов в Jenkins</a>
+* <a href="#SystemProperty">Команды для запуска из терминала</a>
+* <a href="#AllureReport">Отчет о результатах тестирования в Allure</a>
+* <a href="#Telegram">Уведомление в Telegram при помощи Alert bot</a>
 
 
 
@@ -36,7 +35,7 @@
 
 Разработаны автотесты для проверок:
 
-* API:
+* API. Тесты по api.github.com:
 
 :white_check_mark: корректность данных профиля пользователя. Параметризованный (данные из csv файла)
 
@@ -44,11 +43,60 @@
 
 :white_check_mark: корректность данных профиля пользователя. Параметризованный (данные из секретного файла)
 
-:white_check_mark: 
+:white_check_mark: создание нового репозитория пользователя с использованием авторизационного токена
 
 :white_check_mark: 
 
+<h1 align="left">
+<img src="images/technologies/jenkins.svg" width="25" height="25" alt="Jenkins"/>  <a name="Jenkins"><i>Запуск тестов в Jenkins</i></a>
+</h1>
 
+<a target="_blank" href="https://jenkins.autotests.cloud/job/Global_Diploma/">**Сборка в Jenkins**</a>
+<p align="center">  
+<a href="https://jenkins.autotests.cloud/job/qa_guru_diplom_API_tests"><img src="images/screenshots/JenkinsBuildFull.png" alt="Jenkins"/></a>  
+</p>
+
+
+<h1 align="left">
+<a name="SystemProperty"><i>Команды для запуска из терминала</i></a>
+</h1>
+
+***Локальный запуск:***
+```bash  
+gradle clean test
+```
+
+***Удалённый запуск через Jenkins:***
+```bash  
+clean test
+```
+<h1 align="left">
+<img src="images/technologies/allure.svg" width="25" height="25" alt="Allure_Report"/>  <a name="AllureReport"><i>Отчет о результатах тестирования в Allure </i></a>
+</h1>
+
+<a target="_blank" href="https://jenkins.autotests.cloud/job/Global_Diploma/8/allure/">**Allure отчёт из Jenkins**</a>
+<p align="center">  
+
+
+### *Основная страница отчёта*
+
+<p align="center">  
+<img title="Allure Overview Dashboard" src="images/screenshots/AllureMain.png">  
+</p>  
+
+### *Тест кейсы*
+
+<p align="center">  
+<img title="Allure Tests" src="images/screenshots/AllureReportTests.png">  
+</p>
+
+### *Графики*
+
+  <p align="center">  
+<img title="Allure Graphics" src="images/screenshots/AllureReportGraphs.png">  
+</p>
+
+[Наверх ⬆](#наверх)
 
 
 

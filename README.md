@@ -35,7 +35,7 @@
 
 Разработаны автотесты для проверок:
 
-* API. Тесты по api.github.com:
+# *API. Тесты по api.github.com:
 
 :white_check_mark: корректность данных профиля пользователя. Параметризованный (данные из csv файла)
 
@@ -45,7 +45,6 @@
 
 :white_check_mark: создание нового репозитория пользователя с использованием авторизационного токена
 
-:white_check_mark: 
 
 <h1 align="left">
 <img src="images/technologies/jenkins.svg" width="25" height="25" alt="Jenkins"/>  <a name="Jenkins"><i>Запуск тестов в Jenkins</i></a>

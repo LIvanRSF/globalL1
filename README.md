@@ -95,6 +95,14 @@ clean test
 <img title="Allure Graphics" src="images/screenshots/AllureReportGraphs.png">  
 </p>
 
+<h1 align="left">
+<img src="images/technologies/telegram.svg" width="25" height="25"  alt="Allure"/> <a name="Telegram"><i>Уведомление в Telegram при помощи Alert bot</i></a>
+</h1>
+
+<p align="center">  
+<img title="Telegramm notifications" src="images/screenshots/TelegrammNotification.png">  
+</p>
+
 [Наверх ⬆](#наверх)
 
 

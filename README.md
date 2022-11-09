@@ -5,8 +5,8 @@
 ## Содержание :bookmark_tabs:
 * <a href="#stack">Cтек технологий</a>
 * <a href="#objects">Объекты тестирования</a>
-* <a href="#Jenkins">Запуск тестов в Jenkins</a>
 * <a href="#SystemProperty">Команды для запуска из терминала</a>
+* <a href="#Jenkins">Запуск тестов в Jenkins</a>
 * <a href="#AllureReport">Отчет о результатах тестирования в Allure</a>
 * <a href="#selenoid">Видео прогона UI автотестов с удаленного сервера</a>
 * <a href="#Telegram">Уведомление в Telegram при помощи Alert bot</a>
@@ -49,6 +49,35 @@
 
 :white_check_mark: корректность данных профиля пользователя. Параметризованный (данные из секретного файла)
 
+### --== UI. Тесты по github.com ==--
+
+:white_check_mark: редактирование профиля пользователя
+
+:white_check_mark: проверка даты регистрации пользователя на сайте
+
+
+
+<a id="SystemProperty"></a>
+<h1 align="left">
+<img src="images/technologies/terminale.png" width="25" height="25" alt="Jenkins"/>  <a name="Jenkins"><i>Запуск тестов из консоли</i></a>
+</h1>
+
+```bash
+gradle clean 
+-DtestType=${TEST_TYPE}
+-Dbrowser=${BROWSER}
+-DbrowserSize=${BROWSER_SIZE}
+-Dhost=${HOST}
+
+```
+> `${TEST_TYPE}` - вид теста [ *test* <sub>(default)</sub> , *api_tests*, *combo_tests*, *ui_tests* ]
+>
+>
+> `${BROWSER}` - браузер [ *chrome* <sub>(default)</sub> , *firefox*, *opera*]
+>
+> `${BROWSER_SIZE}` - размер окна браузера  [ *1920x1080* <sub>(default)</sub> , *1366x768*, *1280x1024*]
+>
+> `${HOST}` - хост прогона тестов [ *remote* <sub>(default)</sub> , *local* ]
 
 
 <h1 align="left">
@@ -59,23 +88,6 @@
 <p align="center">  
 <a href="https://jenkins.autotests.cloud/job/qa_guru_diplom_API_tests"><img src="images/screenshots/JenkinsBuildFull.png" alt="Jenkins"/></a>  
 </p>
-
-
-<h1 align="left">
-<a name="SystemProperty"><i>Команды для запуска из терминала</i></a>
-</h1>
-
-***Локальный запуск:***
-```bash  
-gradle clean test -Dhost=local
-gradle clean test -Dhost=remote
-```
-
-***Удалённый запуск через Jenkins:***
-```bash  
-clean test -Dhost=local
-clean test -Dhost=remote
-```
 
 <h1 align="left">
 <img src="images/technologies/allure.svg" width="25" height="25" alt="Allure_Report"/>  <a name="AllureReport"><i>Отчет о результатах тестирования в Allure </i></a>
@@ -110,12 +122,12 @@ clean test -Dhost=remote
 <table>
      <tr>
         <td>
-            <video src="https://user-images.githubusercontent.com/72714071/190106687-62bedabc-ebd1-4d1c-8ac2-e7dcb4b980b4.mp4" controls="controls" style="max-width:    730px;" poster="https://github.com/grad0ff/github/blob/master/readme_files/technologies/selenoid.svg">
+            <video src="images/video/EditGitHubProfile.mp4" controls="controls" style="max-width:    730px;" poster="">
 Видео недоступно.
             </video>
         </td>
         <td>
-            <video src="https://user-images.githubusercontent.com/72714071/190106687-62bedabc-ebd1-4d1c-8ac2-e7dcb4b980b4.mp4" controls="controls" style="max-width:    730px;" poster="https://github.com/grad0ff/github/blob/master/readme_files/technologies/selenoid.svg">
+            <video src="images/video/CheckRegDateUser.mp4" controls="controls" style="max-width:    730px;" poster="">
 Видео недоступно.
             </video>
         </td>

@@ -8,6 +8,7 @@
 * <a href="#Jenkins">Запуск тестов в Jenkins</a>
 * <a href="#SystemProperty">Команды для запуска из терминала</a>
 * <a href="#AllureReport">Отчет о результатах тестирования в Allure</a>
+* <a href="#selenoid">Видео прогона UI автотестов с удаленного сервера</a>
 * <a href="#Telegram">Уведомление в Telegram при помощи Alert bot</a>
 
 
@@ -66,13 +67,16 @@
 
 ***Локальный запуск:***
 ```bash  
-gradle clean test
+gradle clean test -Dhost=local
+gradle clean test -Dhost=remote
 ```
 
 ***Удалённый запуск через Jenkins:***
 ```bash  
-clean test
+clean test -Dhost=local
+clean test -Dhost=remote
 ```
+
 <h1 align="left">
 <img src="images/technologies/allure.svg" width="25" height="25" alt="Allure_Report"/>  <a name="AllureReport"><i>Отчет о результатах тестирования в Allure </i></a>
 </h1>
@@ -98,6 +102,26 @@ clean test
   <p align="center">  
 <img title="Allure Graphics" src="images/screenshots/AllureReportGraphs.png">  
 </p>
+
+<a id="selenoid"></a>
+### <img alt="Selenoid" height="50" src="images/technologies/selenoid.svg" width="50"/>Selenoid</a>
+
+### *Видео прогона UI автотестов на удаленном сервере*
+<table>
+     <tr>
+        <td>
+            <video src="https://user-images.githubusercontent.com/72714071/190106687-62bedabc-ebd1-4d1c-8ac2-e7dcb4b980b4.mp4" controls="controls" style="max-width:    730px;" poster="https://github.com/grad0ff/github/blob/master/readme_files/technologies/selenoid.svg">
+Видео недоступно.
+            </video>
+        </td>
+        <td>
+            <video src="https://user-images.githubusercontent.com/72714071/190106687-62bedabc-ebd1-4d1c-8ac2-e7dcb4b980b4.mp4" controls="controls" style="max-width:    730px;" poster="https://github.com/grad0ff/github/blob/master/readme_files/technologies/selenoid.svg">
+Видео недоступно.
+            </video>
+        </td>
+    </tr>
+</table>
+
 
 <h1 align="left">
 <img src="images/technologies/telegram.svg" width="25" height="25"  alt="Allure"/> <a name="Telegram"><i>Уведомление в Telegram при помощи Alert bot</i></a>

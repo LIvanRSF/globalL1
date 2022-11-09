@@ -11,7 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Attach {
-    @Attachment(value = "Log", type = "text/plain") // TODO: 05.09.2022 не работает в firefox
+    @Attachment(value = "Log", type = "text/plain")
     public static String addLogs() {
 
         return String.join("\n", Selenide.getWebDriverLogs(BROWSER));

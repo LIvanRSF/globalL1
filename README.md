@@ -121,7 +121,7 @@ gradle clean
 ### *Пример видео выполнения теста на Selenoid*
 
 <p align="center"> 
-<img title="Browserstack Video" src="images/video/EditGitHubProfile.gif" width="850" height="550"  alt="video">   
+<img title="Browserstack Video" src="images/video/EditGitHubProfile.gif" width="550" height="400"  alt="video">   
 </p>
 
 

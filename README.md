@@ -118,21 +118,11 @@ gradle clean
 <a id="selenoid"></a>
 ### <img alt="Selenoid" height="50" src="images/technologies/selenoid.svg" width="50"/>Selenoid</a>
 
-### *Видео прогона UI автотестов на удаленном сервере*
-<table>
-     <tr>
-        <td>
-            <video src="images/video/EditGitHubProfile.mp4" controls="controls" style="max-width:    730px;" poster="">
-Видео недоступно.
-            </video>
-        </td>
-        <td>
-            <video src="images/video/CheckRegDateUser.mp4" controls="controls" style="max-width:    730px;" poster="">
-Видео недоступно.
-            </video>
-        </td>
-    </tr>
-</table>
+### *Пример видео выполнения теста на Selenoid*
+
+<p align="center"> 
+<img title="Browserstack Video" src="images/video/EditGitHubProfile.gif" width="850" height="550"  alt="video">   
+</p>
 
 
 <h1 align="left">

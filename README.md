@@ -80,6 +80,7 @@ gradle clean
 > `${HOST}` - хост прогона тестов [ *remote* <sub>(default)</sub> , *local* ]
 
 
+<a id="Jenkins"></a>
 <h1 align="left">
 <img src="images/technologies/jenkins.svg" width="25" height="25" alt="Jenkins"/>  <a name="Jenkins"><i>Запуск тестов в Jenkins</i></a>
 </h1>
@@ -124,13 +125,13 @@ gradle clean
 <img title="Browserstack Video" src="images/video/EditGitHubProfile.gif" width="550" height="350"  alt="video">   
 </p>
 
-
+<a id="Telegram"></a>
 <h1 align="left">
 <img src="images/technologies/telegram.svg" width="25" height="25"  alt="Allure"/> <a name="Telegram"><i>Уведомление в Telegram при помощи Alert bot</i></a>
 </h1>
 
 <p align="center">  
-<img title="Telegramm notifications" src="images/screenshots/TelegrammNotification.png">  
+<img title="Telegram notifications" src="images/screenshots/TelegrammNotification.png">  
 </p>
 
 [Наверх ⬆](#наверх)

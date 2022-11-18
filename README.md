@@ -87,7 +87,7 @@ gradle clean
 
 <a target="_blank" href="https://jenkins.autotests.cloud/job/Global_Diploma/">**Jenkins build link**</a>
 <p align="center">  
-<a href="https://jenkins.autotests.cloud/job/qa_guru_diplom_API_tests"><img src="images/screenshots/JenkinsBuildFull.png" alt="Jenkins"/></a>  
+<a href="https://jenkins.autotests.cloud/job/Global_Diploma/"><img src="images/screenshots/JenkinsBuildFull.png" alt="Jenkins"/></a>  
 </p>
 
 <h1 align="left">

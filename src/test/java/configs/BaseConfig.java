@@ -10,4 +10,8 @@ public interface BaseConfig extends Config {
     String baseUrl();
 
     String baseApiUri();
+
+    String users();
+
+    String userRepos();
 }

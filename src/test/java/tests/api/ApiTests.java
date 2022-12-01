@@ -6,13 +6,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static specs.BaseSpec.baseRequest;
 import static specs.BaseSpec.credentialsConfig;
 
-import base.TestBase;
+import tests.base.ApiTestBase;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
-import models.RepositoryPojoModel;
-import models.UserPojoModel;
+import specs.models.RepositoryPojoModel;
+import specs.models.UserPojoModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -25,19 +25,19 @@ import specs.AuthSpec;
 @Tag("API")
 @Story("Work with api on gitHub")
 @DisplayName("API tests")
-public class ApiTests extends TestBase {
+public class ApiTests extends ApiTestBase {
 
     @ParameterizedTest
     @Feature("test with csv file source")
     @CsvFileSource(resources = "/csv/users.csv")
     @DisplayName("Comparing user data")
     public void compareUserData(String login, String name, String mail) {
-        baseRequest.basePath("/users");
         AtomicReference<UserPojoModel> user = new AtomicReference<>();
 
         step("Get user data", () ->
             user.set(given()
                 .spec(baseRequest)
+                .basePath(baseConfig.users())
                 .when()
                 .get(login)
                 .then()
@@ -64,12 +64,12 @@ public class ApiTests extends TestBase {
     @MethodSource(value = "userCompareTestDataProvider")
     @DisplayName("Comparing user data with stream arguments")
     public void compareUserDataWithStreamArguments(String login, String name, String mail) {
-        baseRequest.basePath("/users");
         AtomicReference<UserPojoModel> user = new AtomicReference<>();
 
         step("Get user data", () ->
             user.set(given()
                 .spec(baseRequest)
+                .basePath(baseConfig.users())
                 .when()
                 .get(login)
                 .then()
@@ -88,12 +88,12 @@ public class ApiTests extends TestBase {
     @Feature("test with secret user data")
     @DisplayName("Comparing user data with secret arguments")
     public void compareUserDataWithSecretArguments() {
-        baseRequest.basePath("/users");
         AtomicReference<UserPojoModel> user = new AtomicReference<>();
 
         step("Get user data", () ->
             user.set(given()
                 .spec(baseRequest)
+                .basePath(baseConfig.users())
                 .when()
                 .get(credentialsConfig.login())
                 .then()
@@ -117,12 +117,12 @@ public class ApiTests extends TestBase {
             .name("repository")
             .isPrivate(true)
             .description("Repository for test. Should be deleted");
-        baseRequest.basePath("/user/repos");
         AtomicReference<RepositoryPojoModel> repo = new AtomicReference<>();
 
         step("Create repository for authorized user", () ->
             repo.set(given()
                 .spec(AuthSpec.reqSpec)
+                .basePath(baseConfig.userRepos())
                 .body(repositoryModel)
                 .when()
                 .post()

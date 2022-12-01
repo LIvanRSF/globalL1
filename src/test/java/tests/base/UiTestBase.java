@@ -1,7 +1,10 @@
-package base;
+package tests.base;
+
+import static tests.base.ApiTestBase.baseConfig;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import configs.CredentialsConfig;
 import configs.SelenoidConfig;
 import configs.UiCookiesConfig;
 import helpers.Attach;
@@ -11,10 +14,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class UiTestBase extends TestBase {
+public class UiTestBase{
 
     protected static SelenoidConfig wdConfig = ConfigFactory.create(SelenoidConfig.class);
     protected static UiCookiesConfig uiCookies = ConfigFactory.create(UiCookiesConfig.class);
+    protected static CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class);
     protected static Cookie userAuthCookie = new Cookie("user_session", uiCookies.authCookies());
     protected static Cookie hostCookie = new Cookie("__Host-user_session_same_site", uiCookies.authCookies());
     protected static boolean isRemoteDriver = false;

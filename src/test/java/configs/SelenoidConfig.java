@@ -8,5 +8,6 @@ import org.aeonbits.owner.Config;
 public interface SelenoidConfig extends Config {
 
     String serverUrl();
+
     String videoPath();
 }
